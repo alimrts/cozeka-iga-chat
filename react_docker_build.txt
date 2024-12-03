@@ -1,0 +1,16 @@
+
+docker build -t llm-chat/llm-chat-app .
+
+
+//// to export image
+
+sudo docker save llm-chat/llm-chat-app > llm-chat.tar
+
+sudo docker load -i llm-chat.tar
+
+*** yeni ip alındığında ip alanları güncellenmeli
+
+sudo docker run -d -it  -p 3000:3000/tcp --restart always --name llm-chat llm-chat/llm-chat-app
+
+sudo docker run -d -it -p 3002:3002/tcp --restart always --name llm-chat_global -e REACT_APP_API_BASE_URL=http://31.141.213.201:8001/api llm-chat/llm-chat-app
+
